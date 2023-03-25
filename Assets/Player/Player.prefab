@@ -47,10 +47,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 260
-  m_Range: 40
+  m_Intensity: 200
+  m_Range: 34
   m_SpotAngle: 60
-  m_InnerSpotAngle: 8
+  m_InnerSpotAngle: 40
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -397,8 +397,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  crouchSpeed: 0
-  crouchKey: 306
 --- !u!54 &4231133025633974931
 Rigidbody:
   m_ObjectHideFlags: 0

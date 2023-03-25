@@ -32,6 +32,10 @@ namespace Com.Bruno.NextBots
         private bool isJumping;
         private bool isGrounded;
 
+        // C crouch
+        private bool crouch;
+        private bool isCrouching;
+
         // Axies
 
         private float t_hmove;
@@ -44,6 +48,7 @@ namespace Com.Bruno.NextBots
             mainCam = Camera.main;
             baseFOV = mainCam.fieldOfView;
             rig = GetComponent<Rigidbody>();
+            rig.isKinematic = false;
 
             is_sprintandjumping = false;
 
@@ -61,10 +66,11 @@ namespace Com.Bruno.NextBots
             // Controls
             sprint = Input.GetKey(KeyCode.LeftShift);
             jump = Input.GetKeyDown(KeyCode.Space);
+            crouch = Input.GetKey(KeyCode.C);
 
             // States
             isGrounded = Physics.Raycast(groundDetector.position, Vector3.down, 0.1f, ground);
-            isJumping = jump && isGrounded;
+            isJumping = jump && isGrounded && !crouch;
             isSprinting = sprint && t_vmove > 0 && !isJumping && isGrounded;
 
 
@@ -81,6 +87,9 @@ namespace Com.Bruno.NextBots
                 is_sprintandjumping = true;
             }
             if (!sprint && isGrounded || t_vmove <= 0) is_sprintandjumping = false;
+
+            // crouch
+            isCrouching = crouch && !isJumping && isGrounded;
 
 
         }
@@ -112,6 +121,10 @@ namespace Com.Bruno.NextBots
                 mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, baseFOV * sprintFOVModifier, Time.deltaTime * 8f);
             }
             else { mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, baseFOV, Time.deltaTime * 8f); }
+
+            // camera crouch
+            if (isCrouching) mainCam.transform.localPosition = new Vector3(0f, 0f, 0.2f);
+            else mainCam.transform.localPosition = new Vector3(0f, 0.5f, 0.2f);
         }
 
 

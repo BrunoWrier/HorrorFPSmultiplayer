@@ -23,21 +23,23 @@ public class Enemy : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player Variant").transform;       //GameObject.FindGameObjectWithTag("Player").transform;
-        agent.destination = player.position;
-        agent.speed = speed;
-        agent.angularSpeed = speed * 1.4f;
+
+
+        //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        //player = FindGameObjectWithTag("Player").transform; // GameObject.Find("Player Variant").transform;       //GameObject.FindGameObjectWithTag("Player").transform;
+        //agent.destination = player.position;
+        //agent.speed = speed;
+        //agent.angularSpeed = speed * 1.4f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("Player Variant").transform;
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        transform.LookAt(2 * transform.position - player.position);
-        agent.destination = player.position;
+        //player = FindGameObjectWithTag("Player").transform; // GameObject.Find("Player Variant").transform;
+        //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        //transform.LookAt(2 * transform.position - player.position);
+        //agent.destination = player.position;
 
         //agent.SetDestination(player.position);
 

@@ -43,7 +43,17 @@ public class AnimPlayer : NetworkBehaviour
             }
             else
             {
-                vertical = Input.GetAxis("Vertical") / 2;
+                if (Input.GetAxisRaw("Vertical") != 0){
+                    vertical = 2 / 2;
+                }
+                else if (Input.GetAxisRaw("Horizontal") != 0){
+                    vertical = 2 / 2;
+                }
+                else if (Input.GetAxisRaw("Vertical") == 0 || Input.GetAxisRaw("Vertical") == 0){
+                    vertical = 0;
+                }
+
+                
             }
         }
 
